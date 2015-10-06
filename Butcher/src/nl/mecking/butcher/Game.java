@@ -54,6 +54,7 @@ public class Game extends Canvas implements Runnable {
 
 	@Override
 	public void run() {
+		//TODO: make FPS and UPS counter
 		while(running) {
 			this.update();
 			this.render();
@@ -67,13 +68,17 @@ public class Game extends Canvas implements Runnable {
 			return;
 		}
 		
+		screen.clear();
+		screen.render();
+		
+		// test
 		Graphics g = bs.getDrawGraphics();
-		g.setColor(Color.BLACK);
-		g.fillRect(0, 0, getWidth(), getHeight());
+		g.drawImage(image,  0, 0,  getWidth(), getHeight(),  null);
 		g.dispose();
 		bs.show();
 	}
 
+	// test
 	private void update() {
 		// TODO Auto-generated method stub
 		
