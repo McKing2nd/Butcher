@@ -54,11 +54,33 @@ public class Game extends Canvas implements Runnable {
 
 	@Override
 	public void run() {
-		//TODO: make FPS and UPS counter
+		long lastTime = System.nanoTime();
+		long timer = System.currentTimeMillis();
+		final double ns = 1000000000.0 / 60.0;
+		double delta = 0;
+		int frames = 0;
+		int updates = 0;
 		while(running) {
-			this.update();
+			long now = System.nanoTime();
+			delta += (now - lastTime) / ns;
+
+			lastTime = now;
+			while (delta >=1) {
+				update();
+				updates ++;
+				delta--;
+			}
 			this.render();
+			frames ++;
+			
+			if(System.currentTimeMillis() - timer > 1000) {
+				timer += 1000;
+				frame.setTitle("Butcher | " + frames + " fps, " + updates + " ups");
+				updates = 0;
+				frames = 0;
+			}
 		}
+		stop();
 	}
 	
 	private void render() {
@@ -71,7 +93,6 @@ public class Game extends Canvas implements Runnable {
 		screen.clear();
 		screen.render();
 		
-		// test
 		Graphics g = bs.getDrawGraphics();
 		g.drawImage(image,  0, 0,  getWidth(), getHeight(),  null);
 		g.dispose();
