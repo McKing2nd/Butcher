@@ -14,8 +14,12 @@ public class Screen {
 	public Screen(int width, int height) {
 		this.width = width;
 		this.height = height;
+		// Array with every pixel on the game screen
 		pixels = new int[width*height];
 		
+		/*
+		 * Set up colors for the tiles
+		 */
 		for (int i=0; i< 64 * 64; i++) {
 			tiles[i] = random.nextInt(0xffffff);
 		}
