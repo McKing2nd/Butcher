@@ -93,6 +93,10 @@ public class Game extends Canvas implements Runnable {
 		screen.clear();
 		screen.render();
 		
+		for (int i=0; i < pixels.length; i++) {
+			pixels[i] = screen.pixels[i];
+		}
+		
 		Graphics g = bs.getDrawGraphics();
 		g.drawImage(image,  0, 0,  getWidth(), getHeight(),  null);
 		g.dispose();
