@@ -1,6 +1,8 @@
-Last vid done: 15
+Last vid done: 20
 
 ** TODO **
 
 * Make code TDD
+* Make all non final variables private
+* Create immutable objects
 
