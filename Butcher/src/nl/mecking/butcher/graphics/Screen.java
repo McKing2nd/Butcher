@@ -36,15 +36,14 @@ public class Screen {
 		}
 	}
 
-	public void render() {
+	public void render(int xOffset, int yOffset) {
 		for (int y = 0; y < height; y++) {
 			if (y < 0 || y >= height)
 				break;
 			for (int x = 0; x < width; x++) {
 				if (x < 0 || x >= width)
 					break;
-				int tileIndex = (x >> 4) + (y >> 4) * MAP_SIZE; // >> 4 is the same as
-															// /16
+				int tileIndex = ((x + xOffset >> 4) & MAP_SIZE_MASK) + ((y + yOffset >> 4) & MAP_SIZE_MASK) * MAP_SIZE;
 				pixels[x + y * width] = tiles[tileIndex];
 			}
 		}
