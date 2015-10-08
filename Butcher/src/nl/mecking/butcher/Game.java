@@ -10,6 +10,7 @@ import java.awt.image.DataBufferInt;
 import javax.swing.JFrame;
 
 import nl.mecking.butcher.graphics.Screen;
+import nl.mecking.butcher.input.Keyboard;
 
 public class Game extends Canvas implements Runnable {
 	private static final long serialVersionUID = 1L;
@@ -20,6 +21,7 @@ public class Game extends Canvas implements Runnable {
 
 	private Thread thread;
 	private JFrame frame;
+	private Keyboard input;
 	private boolean running = false;
 
 	private BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
@@ -33,6 +35,9 @@ public class Game extends Canvas implements Runnable {
 
 		screen = new Screen(width, height);
 		frame = new JFrame();
+		
+		input = new Keyboard();
+		addKeyListener(input);
 	}
 
 	public synchronized void start() {
@@ -105,8 +110,11 @@ public class Game extends Canvas implements Runnable {
 	int x, y = 0;
 
 	private void update() {
-		x ++;
-		y ++;
+		input.update();
+		if(input.up) y--;
+		if(input.down) y++;
+		if(input.right) x++;
+		if(input.left) x--;
 
 	}
 
