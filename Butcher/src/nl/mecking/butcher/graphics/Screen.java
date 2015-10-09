@@ -25,13 +25,16 @@ public class Screen {
 	}
 
 	public void render(int xOffset, int yOffset) {
+		int yPosition, xPosition = 0;
 		for (int y = 0; y < height; y++) {
-			if (y < 0 || y >= height)
-				break;
+			yPosition = y + yOffset;
+			if (yPosition < 0 || yPosition >= height)
+				continue;
 			for (int x = 0; x < width; x++) {
-				if (x < 0 || x >= width)
-					break;
-				pixels[x + y * width] = Sprite.grass.pixels[(x & 15) + (y & 15) * Sprite.grass.SIZE];
+				xPosition = x + xOffset;
+				if (xPosition < 0 || xPosition >= width)
+					continue;
+				pixels[xPosition + yPosition * width] = Sprite.grass.pixels[(x & 15) + (y & 15) * Sprite.grass.SIZE];
 			}
 		}
 	}

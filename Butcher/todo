@@ -3,6 +3,6 @@ Last vid done: 20
 ** TODO **
 
 * Make code TDD
-* Make all non final variables private
-* Create immutable objects
+* Make all non final variables private (use getters and setters)
+* Create immutable objects where possible
 
