@@ -9,7 +9,7 @@ public class Screen {
 	public final int MAP_SIZE = 64;
 	public final int MAP_SIZE_MASK = MAP_SIZE - 1;
 
-	public int[] tiles = new int[MAP_SIZE * MAP_SIZE];
+	private int[] tiles = new int[MAP_SIZE * MAP_SIZE];
 
 	private Random random = new Random();
 
@@ -44,9 +44,8 @@ public class Screen {
 				if (x < 0 || x >= width)
 					break;
 				int tileIndex = ((x + xOffset >> 4) & MAP_SIZE_MASK) + ((y + yOffset >> 4) & MAP_SIZE_MASK) * MAP_SIZE;
-				pixels[x + y * width] = tiles[tileIndex];
+				pixels[x + y * width] = Sprite.grass.pixels[(x & 15) + (y & 15) * Sprite.grass.SIZE];
 			}
 		}
 	}
-
 }
