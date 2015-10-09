@@ -1,5 +1,7 @@
 package nl.mecking.butcher.graphics;
 
+import nl.mecking.butcher.level.tile.Tile;
+
 public class Screen {
 
 	private int width, height;
@@ -35,6 +37,17 @@ public class Screen {
 				if (xPosition < 0 || xPosition >= width)
 					continue;
 				pixels[xPosition + yPosition * width] = Sprite.grass.pixels[(x & 15) + (y & 15) * Sprite.grass.SIZE];
+			}
+		}
+	}
+
+	public void renderTile(int xPosition, int yPosition, Tile tile) {
+		for (int y = 0; y < tile.sprite.SIZE; y++) {
+			int ya = y + yPosition;
+			for (int x = 0; x < tile.sprite.SIZE; x++) {
+				int xa = x + xPosition;
+				if (xa < 0 || xa >= width || ya < 0 || ya >= width)
+					break;
 			}
 		}
 	}
