@@ -11,6 +11,8 @@ import javax.swing.JFrame;
 
 import nl.mecking.butcher.graphics.Screen;
 import nl.mecking.butcher.input.Keyboard;
+import nl.mecking.butcher.level.Level;
+import nl.mecking.butcher.level.RandomLevel;
 
 public class Game extends Canvas implements Runnable {
 	private static final long serialVersionUID = 1L;
@@ -22,6 +24,7 @@ public class Game extends Canvas implements Runnable {
 	private Thread thread;
 	private JFrame frame;
 	private Keyboard input;
+	private Level level;
 	private boolean running = false;
 
 	private BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
@@ -35,6 +38,7 @@ public class Game extends Canvas implements Runnable {
 
 		screen = new Screen(width, height);
 		frame = new JFrame();
+		level = new RandomLevel(64,64);
 		
 		input = new Keyboard();
 		addKeyListener(input);
@@ -96,7 +100,7 @@ public class Game extends Canvas implements Runnable {
 		}
 
 		screen.clear();
-		screen.render(x, y);
+		level.render(x, y, screen);
 
 		for (int i = 0; i < pixels.length; i++) {
 			pixels[i] = screen.pixels[i];

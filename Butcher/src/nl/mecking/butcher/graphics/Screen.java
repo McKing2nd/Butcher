@@ -10,6 +10,8 @@ public class Screen {
 	public final int MAP_SIZE = 64;
 	public final int MAP_SIZE_MASK = MAP_SIZE - 1;
 
+	private int xOffset, yOffset;
+
 	public Screen(int width, int height) {
 		this.width = width;
 		this.height = height;
@@ -27,29 +29,30 @@ public class Screen {
 		}
 	}
 
-	public void render(int xOffset, int yOffset) {
-		int yPosition, xPosition = 0;
-		for (int y = 0; y < height; y++) {
-			yPosition = y + yOffset;
-			if (yPosition < 0 || yPosition >= height)
-				continue;
-			for (int x = 0; x < width; x++) {
-				xPosition = x + xOffset;
-				if (xPosition < 0 || xPosition >= width)
-					continue;
-				pixels[xPosition + yPosition * width] = Sprite.grass.pixels[(x & 15) + (y & 15) * Sprite.grass.SIZE];
+
+	/**
+	 * Renders a tile on xTilePosition, yPosition
+	 * 
+	 * @param xTilePosition
+	 * @param yTilePosition
+	 * @param tile
+	 */
+	public void renderTile(int xTilePosition, int yTilePosition, Tile tile) {
+		xTilePosition -= xOffset;
+		yTilePosition -= yOffset;
+		for (int y = 0; y < tile.sprite.SIZE; y++) {
+			int yAbsolute = y + yTilePosition;
+			for (int x = 0; x < tile.sprite.SIZE; x++) {
+				int xAbsolute = x + xTilePosition;
+				if (xAbsolute < 0 || xAbsolute >= width || yAbsolute < 0 || yAbsolute >= width)
+					break;
+				pixels[xAbsolute + yAbsolute * width] = tile.sprite.pixels[x + y * tile.sprite.SIZE];
 			}
 		}
 	}
-
-	public void renderTile(int xPosition, int yPosition, Tile tile) {
-		for (int y = 0; y < tile.sprite.SIZE; y++) {
-			int ya = y + yPosition;
-			for (int x = 0; x < tile.sprite.SIZE; x++) {
-				int xa = x + xPosition;
-				if (xa < 0 || xa >= width || ya < 0 || ya >= width)
-					break;
-			}
-		}
+	
+	public void setOffset(int xOffset, int yOffset) {
+		this.xOffset = xOffset;
+		this.yOffset = yOffset;
 	}
 }
