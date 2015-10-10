@@ -9,6 +9,7 @@ import java.awt.image.DataBufferInt;
 
 import javax.swing.JFrame;
 
+import nl.mecking.butcher.entity.mob.Player;
 import nl.mecking.butcher.graphics.Screen;
 import nl.mecking.butcher.input.Keyboard;
 import nl.mecking.butcher.level.Level;
@@ -25,6 +26,7 @@ public class Game extends Canvas implements Runnable {
 	private JFrame frame;
 	private Keyboard input;
 	private Level level;
+	private Player player;
 	private boolean running = false;
 
 	private BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
@@ -39,8 +41,10 @@ public class Game extends Canvas implements Runnable {
 		screen = new Screen(width, height);
 		frame = new JFrame();
 		level = new RandomLevel(64,64);
-		
+
 		input = new Keyboard();
+		player = new Player(input);
+
 		addKeyListener(input);
 	}
 
@@ -100,7 +104,7 @@ public class Game extends Canvas implements Runnable {
 		}
 
 		screen.clear();
-		level.render(x, y, screen);
+		level.render(player.x, player.y, screen);
 
 		for (int i = 0; i < pixels.length; i++) {
 			pixels[i] = screen.pixels[i];
@@ -112,15 +116,10 @@ public class Game extends Canvas implements Runnable {
 		bs.show();
 	}
 
-	int x, y = 0;
 
 	private void update() {
 		input.update();
-		if(input.up) y--;
-		if(input.down) y++;
-		if(input.right) x++;
-		if(input.left) x--;
-
+		player.update();
 	}
 
 	public static void main(String[] args) {

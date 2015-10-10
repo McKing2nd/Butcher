@@ -29,7 +29,6 @@ public class Screen {
 		}
 	}
 
-
 	/**
 	 * Renders a tile on xTilePosition, yPosition
 	 * 
@@ -46,13 +45,12 @@ public class Screen {
 				int xAbsolute = x + xTilePosition;
 				if (xAbsolute < 0 - tile.sprite.SIZE || xAbsolute >= width || yAbsolute < 0 || yAbsolute >= height)
 					break;
-				if(xAbsolute < 0 ) 
-					xAbsolute = 0;
+				if (xAbsolute < 0) xAbsolute = 0;
 				pixels[xAbsolute + yAbsolute * width] = tile.sprite.pixels[x + y * tile.sprite.SIZE];
 			}
 		}
 	}
-	
+
 	public void setOffset(int xOffset, int yOffset) {
 		this.xOffset = xOffset;
 		this.yOffset = yOffset;

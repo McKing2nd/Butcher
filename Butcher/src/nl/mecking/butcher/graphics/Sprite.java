@@ -7,8 +7,8 @@ public class Sprite {
 	public int[] pixels;
 	private SpriteSheet sheet;
 
-	public static Sprite grass = new Sprite(16, 0, 0, SpriteSheet.tiles);
-	public static Sprite voidSprite = new Sprite(16, 0x0000ff);
+	public static Sprite grass = new Sprite(32, 0, 0, SpriteSheet.tiles);
+	public static Sprite voidSprite = new Sprite(32, 0x0000ff);
 
 	public Sprite(int size, int x, int y, SpriteSheet sheet) {
 		this.SIZE = size;
