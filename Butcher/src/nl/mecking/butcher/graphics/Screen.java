@@ -51,6 +51,21 @@ public class Screen {
 		}
 	}
 
+	public void renderPlayer(int xPlayerPosition, int yPlayerPosition, Sprite sprite) {
+		xPlayerPosition -= xOffset;
+		yPlayerPosition -= yOffset;
+		for (int y = 0; y < 32; y++) {
+			int yAbsolute = y + yPlayerPosition;
+			for (int x = 0; x < 32; x++) {
+				int xAbsolute = x + xPlayerPosition;
+				if (xAbsolute < 0 - 32 || xAbsolute >= width || yAbsolute < 0 || yAbsolute >= height) break;
+				if (xAbsolute < 0) xAbsolute = 0;
+				int colour = sprite.pixels[x + y * 32];
+				if (colour != 0x00000000) pixels[xAbsolute + yAbsolute * width] = colour;
+			}
+		}
+	}
+
 	public void setOffset(int xOffset, int yOffset) {
 		this.xOffset = xOffset;
 		this.yOffset = yOffset;
