@@ -7,7 +7,7 @@ public class Sprite {
 	public int[] pixels;
 	private SpriteSheet sheet;
 
-	public static Sprite grass = new Sprite(32, 0, 0, SpriteSheet.tiles);
+	public static Sprite grass = new Sprite(32, 10, 19, SpriteSheet.tiles1);
 	public static Sprite voidSprite = new Sprite(32, 0x0000ff);
 	
 	public static Sprite player_south = new Sprite(32, 0, 4, SpriteSheet.tiles);
@@ -18,6 +18,7 @@ public class Sprite {
 	public static Sprite player_west_1 = new Sprite(32, 1, 5, SpriteSheet.tiles);
 	public static Sprite player_west_2 = new Sprite(32, 2, 5, SpriteSheet.tiles);
 	
+	// TODO : Flip this from west
 	public static Sprite player_east = new Sprite(32, 0, 6, SpriteSheet.tiles);
 	public static Sprite player_east_1 = new Sprite(32, 1, 6, SpriteSheet.tiles);
 	public static Sprite player_east_2 = new Sprite(32, 2, 6, SpriteSheet.tiles);

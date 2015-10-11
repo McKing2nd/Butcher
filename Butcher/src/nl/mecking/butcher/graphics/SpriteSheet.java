@@ -13,6 +13,7 @@ public class SpriteSheet {
 	public int[] pixels;
 	
 	public static SpriteSheet tiles = new SpriteSheet("/sprites/tiles.png", 256);
+	public static SpriteSheet tiles1 = new SpriteSheet("/sprites/Tiles1.png",960);
 
 	// TODO Is size needed here? Or can we extract that from the image itself?
 	public SpriteSheet(String path, int size) {

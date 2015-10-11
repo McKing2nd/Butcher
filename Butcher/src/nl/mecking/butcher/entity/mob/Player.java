@@ -43,7 +43,7 @@ public class Player extends Mob {
 	public void render(Screen screen) {
 		if (direction == NORTH) {
 			sprite = Sprite.player_north;
-			if (moving) {
+			if (moving) { 
 				if( animate % 20 > 10) {
 					sprite = Sprite.player_north_1;
 				} else {
