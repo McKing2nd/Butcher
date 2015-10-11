@@ -8,8 +8,12 @@ public class Sprite {
 	private SpriteSheet sheet;
 
 	public static Sprite grass = new Sprite(32, 10, 19, SpriteSheet.tiles1);
+	public static Sprite wall = new Sprite(32, 12, 13, SpriteSheet.tiles1);
+	public static Sprite woodenFloor = new Sprite(32, 1, 17, SpriteSheet.tiles1);
 	public static Sprite voidSprite = new Sprite(32, 0x0000ff);
 	
+	// TODO: move player sprites to player class?
+	// PlayerSprites
 	public static Sprite player_south = new Sprite(32, 0, 4, SpriteSheet.tiles);
 	public static Sprite player_south_1 = new Sprite(32, 1, 4, SpriteSheet.tiles);
 	public static Sprite player_south_2 = new Sprite(32, 2, 4, SpriteSheet.tiles);
