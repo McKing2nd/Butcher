@@ -7,10 +7,10 @@ public class Sprite {
 	public int[] pixels;
 	private SpriteSheet sheet;
 
-	public static Sprite grass = new Sprite(32, 10, 19, SpriteSheet.tiles1);
-	public static Sprite wall = new Sprite(32, 12, 13, SpriteSheet.tiles1);
-	public static Sprite woodenFloor = new Sprite(32, 1, 17, SpriteSheet.tiles1);
-	public static Sprite voidSprite = new Sprite(32, 0x0000ff);
+	public static Sprite grass = new Sprite(8, 1, 1, SpriteSheet.newTiles);
+	public static Sprite wall = new Sprite(8, 4, 1, SpriteSheet.newTiles);
+	public static Sprite woodenFloor = new Sprite(8, 7, 1, SpriteSheet.newTiles);
+	public static Sprite voidSprite = new Sprite(8, 0x0000ff);
 	
 	// TODO: move player sprites to player class?
 	// PlayerSprites
@@ -54,7 +54,7 @@ public class Sprite {
 	private void load() {
 		for (int y = 0; y < SIZE; y++) {
 			for (int x = 0; x < SIZE; x++) {
-				pixels[x + y * SIZE] = sheet.pixels[(x + this.x) + (y + this.y) * sheet.SIZE];
+				pixels[x + y * SIZE] = sheet.pixels[(x + this.x) + (y + this.y) * sheet.getHeight()];
 			}
 		}
 	}

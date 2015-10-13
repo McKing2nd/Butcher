@@ -7,31 +7,41 @@ import javax.imageio.ImageIO;
 
 public class SpriteSheet {
 
-	public final int SIZE;
+	private int height;
+	private int width;
 	private String path;
-	
+
 	public int[] pixels;
-	
-	public static SpriteSheet tiles = new SpriteSheet("/sprites/tiles.png", 256);
-	public static SpriteSheet tiles1 = new SpriteSheet("/sprites/Tiles1.png",960);
+
+	public static SpriteSheet tiles = new SpriteSheet("/sprites/tiles.png");
+	public static SpriteSheet tiles1 = new SpriteSheet("/sprites/Tiles1.png");
+	public static SpriteSheet newTiles = new SpriteSheet("/sprites/Objects/Floor.png");
 
 	// TODO Is size needed here? Or can we extract that from the image itself?
-	public SpriteSheet(String path, int size) {
+	public SpriteSheet(String path) {
 		this.path = path;
-		this.SIZE = size;
-		pixels = new int[SIZE * SIZE];
+
 		load();
 	}
 
 	private void load() {
 		try {
 			BufferedImage image = ImageIO.read(SpriteSheet.class.getResource(path));
-			int w = image.getWidth();
-			int h = image.getHeight();
-			image.getRGB(0, 0, w, h, pixels, 0, w);
+			width = image.getWidth();
+			height = image.getHeight();
+			pixels = new int[width * height];
+			image.getRGB(0, 0, width, height, pixels, 0, width);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	
+	public int getHeight() {
+		return height;
+	}
+	
+	public int getWidth() {
+		return width;
 	}
 }
