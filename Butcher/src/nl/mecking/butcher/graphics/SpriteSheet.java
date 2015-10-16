@@ -16,6 +16,7 @@ public class SpriteSheet {
 	public static SpriteSheet tiles = new SpriteSheet("/sprites/tiles.png");
 	public static SpriteSheet tiles1 = new SpriteSheet("/sprites/Tiles1.png");
 	public static SpriteSheet newTiles = new SpriteSheet("/sprites/Objects/Floor.png");
+	public static SpriteSheet warrior = new SpriteSheet("/sprites/Commissions/Warrior.png");
 
 	// TODO Is size needed here? Or can we extract that from the image itself?
 	public SpriteSheet(String path) {

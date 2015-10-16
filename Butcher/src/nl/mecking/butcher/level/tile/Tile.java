@@ -10,7 +10,7 @@ public class Tile {
 	
 	public static Tile grass = new GrassTile(Sprite.grass);
 	public static Tile wall = new WallTile (Sprite.wall);
-	public static Tile woodenFloor = new WallTile (Sprite.woodenFloor);
+	public static Tile woodenFloor = new GrassTile (Sprite.woodenFloor);
 	public static Tile voidTile = new VoidTile(Sprite.voidSprite);
 	
 

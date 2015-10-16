@@ -55,10 +55,10 @@ public class Player extends Mob {
 		if (direction == SOUTH) {
 			sprite = Sprite.player_south;
 			if (moving) {
-				if( animate % 20 > 10) {
+				if( animate %20> 10) {
 					sprite = Sprite.player_south_1;
 				} else {
-					sprite = Sprite.player_south_2;
+					sprite = Sprite.player_south_3;
 				}
 			}
 		}
