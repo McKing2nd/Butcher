@@ -40,6 +40,8 @@ public class Player extends Mob {
 		}
 	}
 
+	// TODO Render 3 stages
+	// TODO Add sideways flipping
 	public void render(Screen screen) {
 		if (direction == NORTH) {
 			sprite = Sprite.player_north;
@@ -58,7 +60,7 @@ public class Player extends Mob {
 				if( animate %20> 10) {
 					sprite = Sprite.player_south_1;
 				} else {
-					sprite = Sprite.player_south_3;
+					sprite = Sprite.player_south_2;
 				}
 			}
 		}

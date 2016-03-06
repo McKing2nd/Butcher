@@ -5,6 +5,8 @@ import nl.mecking.butcher.level.tile.Tile;
 
 public class Level {
 
+	public static Level startCity = new StartCityLevel();
+	
 	protected int width, height;
 	protected int[] tiles;
 

@@ -13,7 +13,8 @@ import nl.mecking.butcher.entity.mob.Player;
 import nl.mecking.butcher.graphics.Screen;
 import nl.mecking.butcher.input.Keyboard;
 import nl.mecking.butcher.level.Level;
-import nl.mecking.butcher.level.RandomLevel;
+import nl.mecking.butcher.level.StartCityLevel;
+import nl.mecking.butcher.level.TileCoordinate;
 
 public class Game extends Canvas implements Runnable {
 	private static final long serialVersionUID = 1L;
@@ -21,7 +22,7 @@ public class Game extends Canvas implements Runnable {
 	public static int width = 300;
 	public static int height = width / 16 * 9;
 	public static int scale = 2;
-
+	
 	private Thread thread;
 	private JFrame frame;
 	private Keyboard input;
@@ -40,10 +41,11 @@ public class Game extends Canvas implements Runnable {
 
 		screen = new Screen(width, height);
 		frame = new JFrame();
-		level = new RandomLevel(64,64);
-
+		level = Level.startCity;
 		input = new Keyboard();
-		player = new Player(input);
+		//TODO: Spawn belongs to a level
+		TileCoordinate spawn = new TileCoordinate(5,3);
+		player = new Player(spawn.getX(),spawn.getY() ,input);
 
 		addKeyListener(input);
 	}
